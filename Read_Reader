@@ -1,0 +1,21 @@
+allnodes = nuke.toAllNodes()
+
+readcount = 0
+
+readlist = {}
+
+
+for r in allnodes:
+	if r.Class=="Read":
+		rfile = r.knob('file').getValue()
+		rfilesplit = rfile.split('/')
+		rtailend = rfilesplit[-1]
+		rtailendsplit = rtailend.split('.')
+		rfilename = rtailendsplit[0]
+		rfiletype = rtailendsplit[-1]
+		rID = "R" + readcount
+		readlist[rID] = [rfile, rtailend, rfilename, rfiletype]
+		readcount = readcount +1
+		
+
+		
